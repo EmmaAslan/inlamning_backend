@@ -1,0 +1,40 @@
+<section>
+    <div class="container">
+        <div class="row">
+        <div class="col-6">
+            <h2>Spel</h2>
+        </div>
+        <div class="col-6 text-end">
+            <form action="/admin/games/new">
+                <button type="submit">Nytt spel</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    
+    <div class="container">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr class="table-titles">
+                    <th>Id</th>
+                    <th>Titel</th>
+                    <th>Genre</th>
+                    <th>Lanseringsår</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% allGames.forEach(game => {  %>  
+                        <tr>
+                            <td><%= game.id %></td>
+                            <td><a href="../games/<%= game.url_slug %>"><%= game.name %></a></td>
+                            <td><%= game.genre %></td>
+                            <td><%= game.release_year %></td> 
+                        </tr>
+                  <% }) %>
+            </tbody>
+
+        </table>
+    </div>
+
+    </div>
+</section>
