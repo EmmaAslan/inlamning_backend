@@ -2,14 +2,13 @@
     <div class="text-center mb-4">Hittade <%= games.length %> träffar på "<%= searchTerm %>"</div>
     
     <div class="row">
-
       <% games.forEach(search => { %>
-
       <div class="container">
+        <a href="../games/<%= search.url_slug %>">
         <div class="row border border-2 border-dark mx-2 mb-1 p-2">
           
           <div class="col">
-            <div class="name"><h3><%= search.name %> </h3> </div>
+            <div class="name"><h3><%= search.name %> </h3></div>
             <div class="row">
                 <div><%= search.genre %>, <%= search.release_year %></div>
             </div>
@@ -27,9 +26,8 @@
           </div>
 
         </div>
+      </a>
       </div>
-
       <% }) %>
-    
     </div>
 </section>

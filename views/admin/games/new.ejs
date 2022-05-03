@@ -1,49 +1,45 @@
 <section>
-   
-
     <div class="container">
         <h2>Nytt spel</h2>
-        <form action="">
-            <div class="row">
-                <div class="col"><label for="title">Titel</label></div>
-            </div>
-            <div class="row">
-                <div class="col"><input type="text"></div>  
-            </div>
-            
-            <br>
-            <br>
-            <label for="description">Beskrivning</label>
-            <br>
-            <input type="text">
-            <br>
-            <br>
-            <label for="image">Bild</label>
-            <br>
-            <input type="file" id="image" name="image">
-            <br>
-            <br>
-            <label for="genre">Genre</label>
-            <br>
-            <select name="genre" id="genre" placeholder="Genre">
-                <!-- <option value="" selected disabled>Genre</option> -->
-                <option value="adventure">Äventyr</option>
-                <option value="puzzle">Pussel</option>
-                <option value="action">Action</option>
-                <option value="boardgames">Brädspel</option>
-            </select>
-            <br>
-            <br>
-            
-            <label for="release_year">Lanseringsår</label>
-            <br>
-            <input type="date" id="release_year" name="release_year">
 
-            <br>
-        <br>
+        <form method="post">
         
-        <button type="submit">Lägg till</button>
+            <div class="form-group col-6 my-3">
+                <label for="title">Titel</label>
+                <input type="text" class="form-control" name="name">
+            </div>
+
+            <div class="form-group col-6 my-3">
+                <label for="description">Beskrivning</label>
+                <textarea type="text" class="form-control" name="description" rows="3"></textarea>
+            </div>
+    
+            <div class="form-group col-6 my-3">
+                <label for="image">Bild</label>
+                <input type="text" class="form-control" id="image" name="imageUrl">
+            </div>  
+        
+            <div class="form-group col-4 my-3">
+                <label for="genre">Genre</label>
+                <select name="genre" class="form-control" id="genre">
+                    <option value="Adventure">Adventure</option>
+                    <option value="Puzzle">Puzzle</option>
+                    <option value="Action">Action</option>
+                    <option value="Boardgames">Boardgames</option>
+                    <option value="Maze">Maze</option>
+                    <option value="Multidirectional shooter">Multidirectional shooter</option>
+                    <option value="Online Multiplayer">Online Multiplayer</option>
+                    <option value="Strategy">Strategy</option>
+                </select>
+            </div>
+        
+            <div class="form-group col-4 my-3">
+                <label for="release_year">Lanseringsår</label>
+                <input type="text" class="form-control" id="release_year" name="releaseYear">
+            </div>
+    
+            <button>Lägg till</button>
         </form>
     </div>
-    
+     
 </section>

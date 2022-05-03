@@ -1,36 +1,34 @@
 <section>
+    <div class="container">
     <h2>Nytt highscore</h2>
-    <form action="">
-        <label for="title">Spel</label>
-        <br>
-        <select name="" id="">
-            <option value="">Speltitel uno</option>
-        </select>
+
+    <form method="post" >
+        <div class="form-group col-6 my-3">
+            <label for="game">Spel</label>
+            <select name="game" class="form-control" id="game">
+                <% gameList.forEach(game => { %>
+                     <option value="<%= game.id %>"><%= game.name %> </option>
+                <% }) %>
+            </select>
+        </div>
+       
+        <div class="form-group col-6 my-3">
+            <label for="playerName">Spelare</label>
+            <input type="text" class="form-control" name="playerName">
+        </div>
         
-        <br>
-        <br>
+        <div class="form-group col-6 my-3">
+            <label for="scoreDate">Datum</label>
+            <input type="date" class="form-control" name="scoreDate">
+        </div>
 
-        <label for="description">Spelare</label>
-        <br>
-        <input type="text">
-
-        <br>
-        <br>
-
-        <label for="scoreDate">Datum</label>
-        <br>
-        <input type="date" id="scoreDate" name="scoreDate">
-
-        <br>
-        <br>
-
-        <label for="score">Poäng</label>
-        <br>
-        <input type="number">
+        <div class="form-group col-6 my-3">
+            <label for="score">Poäng</label>
+            <input type="number" class="form-control" name="score">
+        </div>
         
-        <br>
-        <br>
-        
-        <button type="submit">Lägg till</button>
+        <button>Lägg till</button>
     </form>
+
+</div>
 </section>

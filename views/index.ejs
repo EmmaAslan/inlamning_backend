@@ -2,23 +2,19 @@
     <h1 class="text-center">
       Highscores
     </h1>
-    
     <div class="container">
-    
-
       <% allHighscores.forEach(scores => {   %>
         <div class="row border border-2 border-dark mx-2 mb-1 p-2">
           <div class="col">
             <div class="col">
               
-              <h3><%= scores.game %></h3>
+              <h3><a href="/games/<%= scores.url_slug %>"><%= scores.game_name %></a></h3>
             </div>
             <div class="row">
                 <div><%= scores.player_name %>, 
                   <% const scoreDate = new Date (scores.score_date); %> 
                   <%=scoreDate.toLocaleDateString('se-SE'); %></div>
             </div>
-            
           </div>
           <div class="col">
               <span> </span>
@@ -27,8 +23,6 @@
            <h3><%= scores.score %></h3>
           </div>
         </div>
-
-
         <% }) %>
     </div>
-  </section>
+  </section

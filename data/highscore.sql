@@ -16,24 +16,13 @@ CREATE TABLE game (
 
 CREATE TABLE highscore (
   id INTEGER GENERATED ALWAYS AS IDENTITY,
-  game VARCHAR(50) NOT NULL,
+  game_id INTEGER NOT NULL,
   player_name VARCHAR(50) NOT NULL,
   score_date DATE NOT NULL,
   score BIGINT NOT NULL,
-  PRIMARY KEY (id)
-  -- UNIQUE (game, player_name, score, score_date)
-);
-
-CREATE TABLE game_highscore (
-  game_id INTEGER NOT NULL,
-  highscore_id INTEGER NOT NULL,
-  PRIMARY KEY (game_id, highscore_id),
+  PRIMARY KEY (id),
   FOREIGN KEY (game_id)
-      REFERENCES game (id)
-     ON DELETE CASCADE,
-  FOREIGN KEY (highscore_id)
-      REFERENCES highscore (id)
-     ON DELETE CASCADE
+	  REFERENCES game (id)
 );
 
 ----------------
@@ -81,74 +70,28 @@ VALUES
 'https://via.placeholder.com/320x480.png',
 1979,
 'asteroids'
-)
+);
 
-INSERT INTO highscore (game, player_name, score_date, score)
+
+INSERT INTO highscore (game_id, player_name, score_date, score)
 VALUES 
-('Tetris', 'Wofflan', '2022-04-13', 874455),
-('Tetris', 'Spelaren22', '2022-04-26', 776421),
-('Tetris', 'AndersSON', '2022-02-18', 1874455),
-('Tetris', 'GamerZ', '2022-03-26', 4452004),
-('Pac-Man', 'Waffle', '2022-04-13', 8744),
-('Pac-Man', 'Baffle', '2022-01-22', 8992),
-('Pac-Man', 'GamerZ', '2022-04-30', 9942),
-('Pac-Man', 'Waffle', '2022-03-23', 6522),
-('Donkey Kong', 'Spelaren22', '2022-04-26', 771),
-('Donkey Kong', 'Wofflan', '2022-03-11', 2145),
-('Donkey Kong', 'Håk4N', '2022-04-01', 3771),
-('Donkey Kong', 'Bertil50', '2022-01-01', 4995),
-('Cabal Online', 'Baffle', '2022-04-26', 22771),
-('Cabal Online', 'Wofflan', '2022-03-11', 62145),
-('Cabal Online', 'Håk4N', '2022-04-01', 43771),
-('Cabal Online', 'Spelaren22', '2022-01-01', 24995),
-('Asteroids', 'Waffle', '2022-04-26', 422771),
-('Asteroids', 'GamerZ', '2022-03-11', 862145),
-('Asteroids', 'AndersSON', '2022-04-01', 543771),
-('Asteroids', 'Bertil50', '2022-01-01', 124995);
-
-
-INSERT INTO game_highscore (game_id, highscore_id)
-VALUES 
--- ANPASSA SIFFRORNA EFTER DATA, 
--- siffra 1 = game_id
--- siffra 2 = highscore_id
--- Tetris = 1 - Pac-Man = 2 - Donkey Kong = 3 - Cabal = 4 - Asteroids = 5
-(1, 1),
-(1, 2),
-(1, 3),
-(1, 4),
-(2, 5),
-(2, 6),
-(2, 7),
-(2, 8),
-(3, 9),
-(3, 10),
-(3, 11),
-(3, 12),
-(4, 13),
-(4, 14),
-(4, 15),
-(4, 16),
-(5, 17),
-(5, 18),
-(5, 19),
-(5, 20);
-
-
-----------------
--- INNER JOIN --
-----------------
-
--- TIPS
---ORDER BY i SELECT när jag ska sortera ut varje spels högsta highscore på sida 1
-SELECT game.name as game_name,
-	   highscore.game as highscore_game,
-	   highscore.player_name as highscore_player_name,
-	   highscore.score_date as highscore_score_date,
-	   highscore.score as highscore_score
-	FROM game
-	INNER JOIN game_highscore
-		ON game_highscore.game_id = game.id
-	INNER JOIN highscore
-		ON highscore.id = game_highscore.highscore_id
- WHERE game.url_slug = $1;
+(1, 'Wofflan', '2022-04-13', 874455),
+(1, 'Spelaren22', '2022-04-26', 776421),
+(1, 'AndersSON', '2022-02-18', 1874455),
+(1, 'GamerZ', '2022-03-26', 4452004),
+(2, 'Waffle', '2022-04-13', 8744),
+(2, 'Baffle', '2022-01-22', 8992),
+(2, 'GamerZ', '2022-04-30', 9942),
+(2, 'Waffle', '2022-03-23', 6522),
+(3, 'Spelaren22', '2022-04-26', 771),
+(3, 'Wofflan', '2022-03-11', 2145),
+(3, 'Håk4N', '2022-04-01', 3771),
+(3, 'Bertil50', '2022-01-01', 4995),
+(4, 'Baffle', '2022-04-26', 22771),
+(4, 'Wofflan', '2022-03-11', 62145),
+(4, 'Håk4N', '2022-04-01', 43771),
+(4, 'Spelaren22', '2022-01-01', 24995),
+(5, 'Waffle', '2022-04-26', 422771),
+(5, 'GamerZ', '2022-03-11', 862145),
+(5, 'AndersSON', '2022-04-01', 543771),
+(5, 'Bertil50', '2022-01-01', 124995);

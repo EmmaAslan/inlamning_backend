@@ -1,9 +1,7 @@
-// SÖKSIDAN
-
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-router.get('/', async function(req, res, next) {
+router.get("/", async function (req, res, next) {
   const searchTerm = req.query.q;
 
   const db = req.app.locals.db;
@@ -20,13 +18,13 @@ router.get('/', async function(req, res, next) {
       WHERE name ILIKE '%' || $1 || '%'
   `;
 
-  const result = await db.query(sql, [searchTerm])
+  const result = await db.query(sql, [searchTerm]);
 
-  res.render('search', { 
-      title: 'Sökresultat',
-      games: result.rows,
-      searchTerm
-    });
+  res.render("search", {
+    title: "Sökresultat",
+    games: result.rows,
+    searchTerm,
+  });
 });
 
 module.exports = router;
